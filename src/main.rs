@@ -54,9 +54,13 @@ fn handle_connection(mut stream: TcpStream) {
 
     println!("Nickname of a user: {}", nick_json);
 
-    let user_struct_list: Vec<User> = vec![user];
+    // Creating vector of users and adding a user to it
+    let mut user_struct_list: Vec<User> = Vec::new();
+    
+    user_struct_list.push(user);
 
-    // send_userlist_to_all(user_struct_list);
+    // Calling send_userlist_to_all function here with user_struct_list parameter
+    send_userlist_to_all(user_struct_list);
 }
 
 fn send_userlist_to_all(users_list: Vec<User>) -> String {
